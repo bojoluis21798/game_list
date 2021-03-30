@@ -7,14 +7,15 @@ type Item = {
 };
 
 const Wrapper = styled.div`
+  margin: 3rem 1rem;
   display: flex;
+  flex-direction: column;
 `;
 
 const HeaderItem = styled.h1`
+  margin: 0.5rem;
   position: relative;
-
-  font-size: 2.2rem;
-  margin: 0 2rem;
+  font-size: 2rem;
 
   .shadow {
     margin: 0;

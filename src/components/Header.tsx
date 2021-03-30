@@ -7,6 +7,10 @@ type Item = {
   shadow?: string;
 };
 
+type HeaderProps = {
+  items: Item[];
+};
+
 const Wrapper = styled.div`
   margin: 3rem 1rem;
   display: flex;
@@ -45,7 +49,7 @@ const HeaderItem = styled.h1`
   }
 `;
 
-const Header = ({ items }: { items: Item[] }) => (
+const Header = ({ items }: HeaderProps) => (
   <Wrapper>
     {items.map((item) => (
       <HeaderItem>

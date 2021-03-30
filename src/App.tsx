@@ -1,12 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import Header from "./components/Header";
-import { respondToDesktop } from "./styles";
+import { respondTo } from "./styles";
 
 const Wrapper = styled.div`
-  ${respondToDesktop(css`
+  ${respondTo(
+    "desktop",
+    css`
     padding: 5rem;
-  `)}
+    `
+  )}
 `;
 
 const App = () => {

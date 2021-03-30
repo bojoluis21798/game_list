@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { respondToDesktop } from "../styles";
+import { respondTo } from "../styles";
 
 type Item = {
   name: string;
@@ -12,9 +12,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${respondToDesktop(css`
+  ${respondTo(
+    "desktop",
+    css`
     flex-direction: row;
-  `)}
+    `
+  )}
 `;
 
 const HeaderItem = styled.h1`
@@ -23,9 +26,12 @@ const HeaderItem = styled.h1`
   font-size: 2rem;
 
   .shadow {
-    ${respondToDesktop(css`
+    ${respondTo(
+      "desktop",
+      css`
       display: initial;
-    `)}
+      `
+    )}
 
     display: none;
     margin: 0;

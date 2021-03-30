@@ -10,8 +10,13 @@ export const theme: DefaultTheme = {
   inputColor: "#182c47",
 };
 
-export const respondToDesktop = (content: FlattenSimpleInterpolation) => css`
-  @media only screen and (min-width: 769px) {
+export const respondTo = (
+  breakpoint: "tablet" | "desktop",
+  content: FlattenSimpleInterpolation
+) => css`
+  @media only screen and (min-width: ${breakpoint === "tablet"
+      ? "768px"
+      : "1024px"}) {
     ${content}
   }
 `;

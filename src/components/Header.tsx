@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   ${respondTo(
     "desktop",
     css`
-    flex-direction: row;
+      flex-direction: row;
     `
   )}
 `;
@@ -29,14 +29,14 @@ const HeaderItem = styled.div`
 
   h1 {
     margin: 0.5rem;
-  font-size: 2rem;
+    font-size: 2rem;
   }
 
   .shadow {
     ${respondTo(
       "desktop",
       css`
-      display: initial;
+        display: initial;
       `
     )}
 

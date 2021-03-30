@@ -10,15 +10,15 @@ type HeaderProps = {
   items: Item[];
 };
 
-const Header = ({ items }: HeaderProps) => (
-  <Wrapper>
-    {items.map((item, index) => (
-      <HeaderItem key={item.name + index}>
-        {item.shadow && <h1 className="shadow">{item.shadow}</h1>}
-        <h1>{item.name}</h1>
-      </HeaderItem>
-    ))}
-  </Wrapper>
-);
-
-export default Header;
+export default function Header({ items }: HeaderProps) {
+  return (
+    <Wrapper>
+      {items.map((item, index) => (
+        <HeaderItem key={item.name + index}>
+          {item.shadow && <h1 className="shadow">{item.shadow}</h1>}
+          <h1>{item.name}</h1>
+        </HeaderItem>
+      ))}
+    </Wrapper>
+  );
+}

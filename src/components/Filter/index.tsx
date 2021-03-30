@@ -10,7 +10,7 @@ type FilterProps = {
   onClear: () => void;
 };
 
-const Filter = ({ onFilter, onClear }: FilterProps) => {
+export default function Filter({ onFilter, onClear }: FilterProps) {
   const [form, setForm] = useState<FilterType>({
     name: "",
     score: {
@@ -106,6 +106,4 @@ const Filter = ({ onFilter, onClear }: FilterProps) => {
       </div>
     </Wrapper>
   );
-};
-
-export default Filter;
+}

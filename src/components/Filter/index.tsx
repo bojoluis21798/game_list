@@ -1,9 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import FilterType from "../../types/FilterType";
 import { Wrapper } from "./styles";
+
+const initialState: FilterType = {
+  name: "",
+  score: {
+    min: 1,
+    max: 10,
+  },
+  orderBy: {
+    type: "Release Date",
+    ascending: true,
+  },
+};
+
+type Action = {
+  type: ActionType;
+  payload?: string;
+};
+
+enum ActionType {
+  CHANGE_NAME,
+  CHANGE_SCORE,
+  TOGGLE_ASCENDING,
+  CHANGE_ORDER_BY,
+}
+
+function reducer(state: FilterType, action: Action): FilterType {
+  switch (action.type) {
+    case ActionType.CHANGE_NAME:
+      return {
+        ...state,
+        name: action.payload,
+      };
+    case ActionType.CHANGE_SCORE:
+      return {
+        ...state,
+        score: {
+          min: parseInt(action.payload),
+          max: parseInt(action.payload),
+        },
+      };
+    case ActionType.TOGGLE_ASCENDING:
+      return {
+        ...state,
+        orderBy: {
+          ...state.orderBy,
+          ascending: !state.orderBy.ascending,
+        },
+      };
+    case ActionType.CHANGE_ORDER_BY:
+      return {
+        ...state,
+        orderBy: {
+          ...state.orderBy,
+          type: action.payload as FilterType["orderBy"]["type"],
+        },
+      };
+    default:
+      return state;
+  }
+}
 
 type FilterProps = {
   onFilter: (form: FilterType) => void;
@@ -11,17 +71,7 @@ type FilterProps = {
 };
 
 export default function Filter({ onFilter, onClear }: FilterProps) {
-  const [form, setForm] = useState<FilterType>({
-    name: "",
-    score: {
-      min: 1,
-      max: 10,
-    },
-    orderBy: {
-      type: "Release Date",
-      ascending: true,
-    },
-  });
+  const [form, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     onFilter(form);
@@ -37,7 +87,12 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
           <input
             type="text"
             name="name"
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            onChange={(e) =>
+              dispatch({
+                type: ActionType.CHANGE_NAME,
+                payload: e.target.value,
+              })
+            }
           />
         </div>
 
@@ -47,12 +102,9 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
             type="text"
             name="minimum_score"
             onChange={(e) =>
-              setForm({
-                ...form,
-                score: {
-                  min: parseInt(e.target.value),
-                  max: parseInt(e.target.value),
-                },
+              dispatch({
+                type: ActionType.CHANGE_SCORE,
+                payload: e.target.value,
               })
             }
           />
@@ -63,12 +115,8 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
           <div className="order-by-group">
             <button
               onClick={() => {
-                setForm({
-                  ...form,
-                  orderBy: {
-                    ...form.orderBy,
-                    ascending: !form.orderBy.ascending,
-                  },
+                dispatch({
+                  type: ActionType.TOGGLE_ASCENDING,
                 });
               }}
             >
@@ -80,12 +128,9 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
               type="text"
               name="order_by"
               onChange={(e) => {
-                setForm({
-                  ...form,
-                  orderBy: {
-                    ...form.orderBy,
-                    type: e.target.value as FilterType["orderBy"]["type"],
-                  },
+                dispatch({
+                  type: ActionType.CHANGE_ORDER_BY,
+                  payload: e.target.value,
                 });
               }}
             />

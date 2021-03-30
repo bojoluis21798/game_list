@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, DefaultTheme } from "styled-components";
 
-export const theme = {
+export const theme: DefaultTheme = {
   headingFont: "500 1rem 'Montserrat', sans-serif",
-  headingFontHeavy: "600 1rem 'Montserrat', sans-serif",
   white: "#fff",
   accent: "#5692e8",
   textColor: "#c1d1e8",

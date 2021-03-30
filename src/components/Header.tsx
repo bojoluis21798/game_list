@@ -51,8 +51,7 @@ const HeaderItem = styled.h1`
 
 const Header = ({ items }: HeaderProps) => (
   <Wrapper>
-    {items.map((item) => (
-      <HeaderItem>
+      <HeaderItem key={item.name + index}>
         {item.shadow && <h1 className="shadow">{item.shadow}</h1>}
         {item.name}
       </HeaderItem>

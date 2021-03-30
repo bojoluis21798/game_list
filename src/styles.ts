@@ -1,4 +1,19 @@
+import styled, {
+  createGlobalStyle,
+  DefaultTheme,
+  css,
+} from "styled-components";
+
 import respondTo from "./utils/respondTo";
+
+export const Wrapper = styled.div`
+  ${respondTo(
+    "desktop",
+    css`
+      padding: 5rem;
+    `
+  )}
+`;
 
 export const theme: DefaultTheme = {
   headingFont: "500 1rem 'Montserrat', sans-serif",

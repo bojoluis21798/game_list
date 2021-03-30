@@ -1,16 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import Header from "./components/Header";
-import { respondTo } from "./styles";
 
-const Wrapper = styled.div`
-  ${respondTo(
-    "desktop",
-    css`
-    padding: 5rem;
-    `
-  )}
-`;
+import Header from "./components/Header";
+import { Wrapper } from "./styles";
 
 const App = () => {
   return (

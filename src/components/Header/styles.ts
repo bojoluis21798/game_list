@@ -1,17 +1,8 @@
-import React from "react";
 import styled, { css } from "styled-components";
-import { respondTo } from "../styles";
 
-type Item = {
-  name: string;
-  shadow?: string;
-};
+import respondTo from "../../utils/respondTo";
 
-type HeaderProps = {
-  items: Item[];
-};
-
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   margin: 3rem 1rem;
   display: flex;
   flex-direction: column;
@@ -24,7 +15,7 @@ const Wrapper = styled.div`
   )}
 `;
 
-const HeaderItem = styled.div`
+export const HeaderItem = styled.div`
   position: relative;
 
   h1 {
@@ -51,16 +42,3 @@ const HeaderItem = styled.div`
     z-index: -1;
   }
 `;
-
-const Header = ({ items }: HeaderProps) => (
-  <Wrapper>
-    {items.map((item, index) => (
-      <HeaderItem key={item.name + index}>
-        {item.shadow && <h1 className="shadow">{item.shadow}</h1>}
-        <h1>{item.name}</h1>
-      </HeaderItem>
-    ))}
-  </Wrapper>
-);
-
-export default Header;

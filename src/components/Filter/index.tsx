@@ -1,60 +1,17 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
-const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.cardColor};
-  margin: 0.5rem;
-  padding: 1rem;
-
-  .filter-form {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .input-group {
-    width: 100%;
-    margin: 0.5rem 0;
-
-    label {
-      display: block;
-      margin: 0.5rem 0;
-    }
-
-    input {
-      width: 100%;
-    }
-
-    .clear_button {
-      width: 100%;
-    }
-  }
-
-  .order-by-group {
-    display: flex;
-  }
-`;
-
-export type FilterForm = {
-  name: string;
-  score: {
-    min: number;
-    max: number;
-  };
-  orderBy: {
-    type: "Release Date" | "Score" | "Name";
-    ascending: boolean;
-  };
-};
+import FilterType from "../../types/FilterType";
+import { Wrapper } from "./styles";
 
 type FilterProps = {
-  onFilter: (form: FilterForm) => void;
+  onFilter: (form: FilterType) => void;
   onClear: () => void;
 };
 
 const Filter = ({ onFilter, onClear }: FilterProps) => {
-  const [form, setForm] = useState<FilterForm>({
+  const [form, setForm] = useState<FilterType>({
     name: "",
     score: {
       min: 1,
@@ -127,7 +84,7 @@ const Filter = ({ onFilter, onClear }: FilterProps) => {
                   ...form,
                   orderBy: {
                     ...form.orderBy,
-                    type: e.target.value as FilterForm["orderBy"]["type"],
+                    type: e.target.value as FilterType["orderBy"]["type"],
                   },
                 });
               }}

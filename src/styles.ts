@@ -30,6 +30,17 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     background-color: ${theme.accent};
+    outline: none;
+    border: 0;
+    padding: 0.5rem;
+  }
+
+  input[type="text"] {
+    border: 0;
+    outline: none;
+    padding: 0.5rem;
+    color: ${theme.textColor};
+    background-color: ${theme.inputColor};
   }
 
   h1, h2, h3, h4, h5, h6, button, label {

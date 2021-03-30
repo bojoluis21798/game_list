@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "target": "ES5",
+    "jsx": "react",
+    "module": "ESNext",
+    "rootDir": "src",
+    "lib": ["dom", "esnext"],
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true
+  },
+  "include": ["src/*"],
+  "exclude": ["node_modules", "build"]
+}

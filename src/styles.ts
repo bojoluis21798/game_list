@@ -1,5 +1,4 @@
-import { FlattenSimpleInterpolation } from "styled-components";
-import { createGlobalStyle, DefaultTheme, css } from "styled-components";
+import respondTo from "./utils/respondTo";
 
 export const theme: DefaultTheme = {
   headingFont: "500 1rem 'Montserrat', sans-serif",
@@ -9,17 +8,6 @@ export const theme: DefaultTheme = {
   cardColor: "#0e1a2b",
   inputColor: "#182c47",
 };
-
-export const respondTo = (
-  breakpoint: "tablet" | "desktop",
-  content: FlattenSimpleInterpolation
-) => css`
-  @media only screen and (min-width: ${breakpoint === "tablet"
-      ? "768px"
-      : "1024px"}) {
-    ${content}
-  }
-`;
 
 export const GlobalStyle = createGlobalStyle`
   body {

@@ -46,7 +46,7 @@ const HeaderItem = styled.div`
     font-size: 4rem;
     bottom: 0.8rem;
     left: -1.7rem;
-    color: #182c47;
+    color: ${(props) => props.theme.inputColor};
     font-weight: 600;
     z-index: -1;
   }

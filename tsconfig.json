@@ -4,6 +4,7 @@
     "target": "ES5",
     "jsx": "react",
     "module": "ESNext",
+    "noEmit": true,
     "moduleResolution": "node",
     "rootDir": "src",
     "lib": ["dom", "esnext"],

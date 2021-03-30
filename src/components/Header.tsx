@@ -18,6 +18,7 @@ const HeaderItem = styled.h1`
   font-size: 2rem;
 
   .shadow {
+    display: none;
     margin: 0;
     position: absolute;
     font-size: 4rem;

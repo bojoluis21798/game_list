@@ -4,6 +4,7 @@
     "target": "ES5",
     "jsx": "react",
     "module": "ESNext",
+    "moduleResolution": "node",
     "rootDir": "src",
     "lib": ["dom", "esnext"],
     "allowSyntheticDefaultImports": true,

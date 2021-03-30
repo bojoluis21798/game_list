@@ -24,10 +24,13 @@ const Wrapper = styled.div`
   )}
 `;
 
-const HeaderItem = styled.h1`
-  margin: 0.5rem;
+const HeaderItem = styled.div`
   position: relative;
+
+  h1 {
+    margin: 0.5rem;
   font-size: 2rem;
+  }
 
   .shadow {
     ${respondTo(
@@ -54,7 +57,7 @@ const Header = ({ items }: HeaderProps) => (
     {items.map((item, index) => (
       <HeaderItem key={item.name + index}>
         {item.shadow && <h1 className="shadow">{item.shadow}</h1>}
-        {item.name}
+        <h1>{item.name}</h1>
       </HeaderItem>
     ))}
   </Wrapper>

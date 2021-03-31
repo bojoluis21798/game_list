@@ -32,15 +32,22 @@ export const GlobalStyle = createGlobalStyle`
     color: ${theme.textColor};
   }
 
+  button, input[type="text"] {
+    border: 1px solid rgba(255,255,255,0);
+    transition: 0.2s ease border-color;
+
+    &:focus {
+      border-color: rgba(255,255,255,0.3);
+    }
+  }
+
   button {
     background-color: ${theme.accent};
     outline: none;
-    border: 0;
     padding: 0.5rem;
   }
 
   input[type="text"] {
-    border: 0;
     outline: none;
     padding: 0.5rem;
     color: ${theme.textColor};

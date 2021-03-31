@@ -22,7 +22,7 @@ export const theme: DefaultTheme = {
   textColor: "#c1d1e8",
   cardColor: "#0e1a2b",
   inputColor: "#182c47",
-  inputTransparent: "rgba(24, 44, 71, 0.7)",
+  inputTransparent: "rgba(24, 44, 71, 0.8)",
 };
 
 export const GlobalStyle = createGlobalStyle`

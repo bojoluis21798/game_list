@@ -5,78 +5,13 @@ import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import FilterType from "../../types/FilterType";
 import { Wrapper } from "./styles";
 
-const initialState: FilterType = {
-  name: "",
-  score: {
-    min: 1,
-    max: 10,
-  },
-  orderBy: {
-    type: "Release Date",
-    ascending: true,
-  },
-};
-
-type Action = {
-  type: ActionType;
-  payload?: string;
-};
-
-enum ActionType {
-  CHANGE_NAME,
-  CHANGE_SCORE,
-  TOGGLE_ASCENDING,
-  CHANGE_ORDER_BY,
-}
-
-function reducer(state: FilterType, action: Action): FilterType {
-  switch (action.type) {
-    case ActionType.CHANGE_NAME:
-      return {
-        ...state,
-        name: action.payload,
-      };
-    case ActionType.CHANGE_SCORE:
-      return {
-        ...state,
-        score: {
-          min: parseInt(action.payload),
-          max: parseInt(action.payload),
-        },
-      };
-    case ActionType.TOGGLE_ASCENDING:
-      return {
-        ...state,
-        orderBy: {
-          ...state.orderBy,
-          ascending: !state.orderBy.ascending,
-        },
-      };
-    case ActionType.CHANGE_ORDER_BY:
-      return {
-        ...state,
-        orderBy: {
-          ...state.orderBy,
-          type: action.payload as FilterType["orderBy"]["type"],
-        },
-      };
-    default:
-      return state;
-  }
-}
-
 type FilterProps = {
-  onFilter: (form: FilterType) => void;
+  onChange: (form: FilterType) => void;
   onClear: () => void;
+  filter: FilterType;
 };
 
-export default function Filter({ onFilter, onClear }: FilterProps) {
-  const [form, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    onFilter(form);
-  }, [form]);
-
+export default function Filter({ onClear, onChange, filter }: FilterProps) {
   return (
     <Wrapper>
       <h2 className="filter-title">Filter Results</h2>
@@ -88,9 +23,9 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
             type="text"
             name="name"
             onChange={(e) =>
-              dispatch({
-                type: ActionType.CHANGE_NAME,
-                payload: e.target.value,
+              onChange({
+                ...filter,
+                name: e.target.value,
               })
             }
           />
@@ -102,9 +37,12 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
             type="text"
             name="minimum_score"
             onChange={(e) =>
-              dispatch({
-                type: ActionType.CHANGE_SCORE,
-                payload: e.target.value,
+              onChange({
+                ...filter,
+                score: {
+                  min: parseInt(e.target.value),
+                  max: parseInt(e.target.value),
+                },
               })
             }
           />
@@ -115,22 +53,23 @@ export default function Filter({ onFilter, onClear }: FilterProps) {
           <div className="order-by-group">
             <button
               onClick={() => {
-                dispatch({
-                  type: ActionType.TOGGLE_ASCENDING,
+                onChange({
+                  ...filter,
+                  ascending: !filter.ascending,
                 });
               }}
             >
               <FontAwesomeIcon
-                icon={form.orderBy.ascending ? faArrowUp : faArrowDown}
+                icon={filter.ascending ? faArrowUp : faArrowDown}
               />
             </button>
             <input
               type="text"
               name="order_by"
               onChange={(e) => {
-                dispatch({
-                  type: ActionType.CHANGE_ORDER_BY,
-                  payload: e.target.value,
+                onChange({
+                  ...filter,
+                  orderBy: e.target.value as FilterType["orderBy"],
                 });
               }}
             />

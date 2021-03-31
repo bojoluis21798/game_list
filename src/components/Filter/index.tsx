@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import ToggleArrow from "../ToggleArrow";
-import { FilterType } from "../../types";
+import { FilterType, OrderBy } from "../../types";
 import { Wrapper } from "./styles";
 
 type FilterProps = {
@@ -60,13 +60,12 @@ export default function Filter({ onClear, onChange, filter }: FilterProps) {
                 });
               }}
             />
-            <input
-              type="text"
-              name="order_by"
-              onChange={(e) => {
+            <Select
+              items={[OrderBy.RELEASE_DATE, OrderBy.NAME, OrderBy.SCORE]}
+              onSelect={(selected) => {
                 onChange({
                   ...filter,
-                  orderBy: e.target.value as FilterType["orderBy"],
+                  orderBy: selected as FilterType["orderBy"],
                 });
               }}
             />

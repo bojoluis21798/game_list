@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Filter from "./components/Filter";
 import { Wrapper } from "./styles";
-import { FilterType } from "./types";
+import { FilterType, OrderBy } from "./types";
 
 const initialFilter: FilterType = {
   name: "",
@@ -11,7 +11,7 @@ const initialFilter: FilterType = {
     min: 1,
     max: 10,
   },
-  orderBy: "Release Date",
+  orderBy: OrderBy.RELEASE_DATE,
   ascending: true,
 };
 

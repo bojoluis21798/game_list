@@ -8,4 +8,4 @@ type FilterType = {
   ascending: boolean;
 };
 
-export default FilterType;
+export { FilterType };

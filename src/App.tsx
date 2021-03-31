@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Filter from "./components/Filter";
 import { Wrapper } from "./styles";
-import FilterType from "./types/FilterType";
+import { FilterType } from "./types";
 
 const initialFilter: FilterType = {
   name: "",

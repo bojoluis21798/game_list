@@ -26,11 +26,8 @@ export const theme: DefaultTheme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  body, input {
-    font: 500 12px 'Mulish', sans-serif;
-  }
-  
   body {
+    font: 500 12px 'Mulish', sans-serif;
     background-image: linear-gradient(#081221, #03080f);
     color: ${theme.textColor};
   }

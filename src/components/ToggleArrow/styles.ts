@@ -5,6 +5,10 @@ type IconProps = {
   isDown: boolean;
 };
 
+export const Button = styled.button`
+  cursor: pointer;
+`;
+
 export const Icon = styled(FontAwesomeIcon)<IconProps>`
   transform: rotate(0deg);
   ${(props) => !props.isDown && `transform: rotate(180deg);`}

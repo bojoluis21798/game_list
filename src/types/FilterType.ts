@@ -4,10 +4,8 @@ type FilterType = {
     min: number;
     max: number;
   };
-  orderBy: {
-    type: "Release Date" | "Score" | "Name";
-    ascending: boolean;
-  };
+  orderBy: "Release Date" | "Score" | "Name";
+  ascending: boolean;
 };
 
 export default FilterType;

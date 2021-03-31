@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
-import FilterType from "../../types/FilterType";
+import { FilterType } from "../../types";
 import { Wrapper } from "./styles";
 
 type FilterProps = {

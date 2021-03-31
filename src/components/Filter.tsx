@@ -8,6 +8,11 @@ const Wrapper = styled.div`
   margin: 0.5rem;
   padding: 1rem;
 
+  .filter-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
   .filter-form {
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +23,7 @@ const Wrapper = styled.div`
     margin: 0.5rem 0;
 
     label {
+      font-size: 0.85rem;
       display: block;
       margin: 0.5rem 0;
     }

@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
+import ToggleArrow from "../ToggleArrow";
 import { FilterType } from "../../types";
 import { Wrapper } from "./styles";
 
@@ -51,18 +52,14 @@ export default function Filter({ onClear, onChange, filter }: FilterProps) {
         <div className="input-group input-group__order">
           <label htmlFor="order_by">Order By</label>
           <div className="order-by-group">
-            <button
-              onClick={() => {
+            <ToggleArrow
+              onToggle={(toggleState) => {
                 onChange({
                   ...filter,
-                  ascending: !filter.ascending,
+                  ascending: toggleState,
                 });
               }}
-            >
-              <FontAwesomeIcon
-                icon={filter.ascending ? faArrowUp : faArrowDown}
-              />
-            </button>
+            />
             <input
               type="text"
               name="order_by"

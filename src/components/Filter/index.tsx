@@ -1,7 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
+import Select from "../Select";
 import ToggleArrow from "../ToggleArrow";
 import { FilterType, OrderBy } from "../../types";
 import { Wrapper } from "./styles";

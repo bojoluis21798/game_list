@@ -11,7 +11,6 @@ module.exports = {
   },
 
   mode: "development",
-  watch: true,
   devServer: {
     hot: true,
   },

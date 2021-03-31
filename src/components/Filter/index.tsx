@@ -61,6 +61,7 @@ export default function Filter({ onClear, onChange, filter }: FilterProps) {
             />
             <Select
               items={[OrderBy.RELEASE_DATE, OrderBy.NAME, OrderBy.SCORE]}
+              selected={filter.orderBy}
               onSelect={(selected) => {
                 onChange({
                   ...filter,

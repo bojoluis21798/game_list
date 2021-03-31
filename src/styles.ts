@@ -44,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     padding: 0.5rem;
     color: ${theme.textColor};
+    font: ${theme.headingFont};
     background-color: ${theme.inputColor};
   }
 

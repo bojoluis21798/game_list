@@ -1,7 +1,0 @@
-{
-  "extends": [
-    "eslint:recommended",
-    "eslint-config-airbnb",
-    "eslint-config-prettier"
-  ]
-}

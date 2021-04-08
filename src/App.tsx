@@ -15,7 +15,7 @@ const initialFilter: FilterType = {
   ascending: true,
 };
 
-export default function App() {
+export default function App(): JSX.Element {
   const [filter, setFilter] = useState<FilterType>(initialFilter);
 
   return (

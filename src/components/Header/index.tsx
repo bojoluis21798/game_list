@@ -11,7 +11,7 @@ type HeaderProps = {
   items: Item[];
 };
 
-export default function Header({ items }: HeaderProps) {
+export default function Header({ items }: HeaderProps): JSX.Element {
   return (
     <Wrapper>
       {items.map((item, index) => (

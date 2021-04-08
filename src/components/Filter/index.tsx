@@ -11,7 +11,11 @@ type FilterProps = {
   filter: FilterType;
 };
 
-export default function Filter({ onClear, onChange, filter }: FilterProps) {
+export default function Filter({
+  onClear,
+  onChange,
+  filter,
+}: FilterProps): JSX.Element {
   return (
     <Wrapper>
       <h2 className="filter-title">Filter Results</h2>

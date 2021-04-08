@@ -7,7 +7,9 @@ type ArrowButtonProps = {
   onToggle: (down: boolean) => void;
 };
 
-export default function ToggleArrow({ onToggle }: ArrowButtonProps) {
+export default function ToggleArrow({
+  onToggle,
+}: ArrowButtonProps): JSX.Element {
   const [down, setDown] = useState<boolean>(true);
 
   return (

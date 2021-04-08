@@ -12,7 +12,11 @@ type SelectProps = {
   onSelect: (selected: string) => void;
 };
 
-const Select = ({ items, selected, onSelect }: SelectProps) => {
+export default function Select({
+  items,
+  selected,
+  onSelect,
+}: SelectProps): JSX.Element {
   const [show, setShow] = useState<boolean>(false);
   const firstButtonRef = useRef<HTMLButtonElement>(null);
 

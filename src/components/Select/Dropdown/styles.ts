@@ -5,7 +5,7 @@ type WrapperProps = {
   transitionState: TransitionStatus;
 };
 
-export const Wrapper = styled.button<WrapperProps>`
+export const Wrapper = styled.div<WrapperProps>`
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
   overflow: hidden;

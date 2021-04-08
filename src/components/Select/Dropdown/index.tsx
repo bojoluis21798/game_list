@@ -19,7 +19,7 @@ export default function Dropdown({
   onSelect,
   onBlur,
 }: DropdownProps): JSX.Element {
-  const dropDownRef = useRef<HTMLButtonElement>(null);
+  const dropDownRef = useRef<HTMLDivElement>(null);
   const buttonRefs =
     (dropDownRef.current?.querySelectorAll(
       "button.dropdown-button"

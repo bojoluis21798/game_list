@@ -12,6 +12,7 @@ module.exports = {
 
   mode: "development",
   devServer: {
+    open: true,
     hot: true,
   },
 

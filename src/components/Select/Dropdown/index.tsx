@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { TransitionStatus } from "react-transition-group";
 
 import { Wrapper } from "./styles";
@@ -27,17 +27,21 @@ export default function Dropdown({
 
   const [buttonIndex, setButtonIndex] = useState<number>(0);
 
-  const options = items
-    .filter((item) => item !== selected)
-    .map((item) => (
-      <button
-        className="dropdown-button"
-        key={item}
-        onMouseDown={() => onSelect(item)}
-      >
-        {item}
-      </button>
-    ));
+  const options = useMemo(
+    () =>
+      items
+        .filter((item) => item !== selected)
+        .map((item) => (
+          <button
+            className="dropdown-button"
+            key={item}
+            onMouseDown={() => onSelect(item)}
+          >
+            {item}
+          </button>
+        )),
+    [items, onSelect, selected]
+  );
 
   useEffect(() => {
     if (buttonRefs && transitionState === "entered") {

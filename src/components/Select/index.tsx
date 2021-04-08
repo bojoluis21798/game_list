@@ -57,6 +57,4 @@ export default function Select({
       </Transition>
     </Wrapper>
   );
-};
-
-export default Select;
+}

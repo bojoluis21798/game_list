@@ -6,6 +6,8 @@ import Slider from "../Slider";
 import { FilterType, OrderBy } from "../../types";
 import { Wrapper } from "./styles";
 
+let delayID: NodeJS.Timeout = null;
+
 type FilterProps = {
   onChange: (form: FilterType) => void;
   onClear: () => void;
@@ -27,12 +29,16 @@ export default function Filter({
           <input
             type="text"
             name="name"
-            onChange={(e) =>
-              onChange({
-                ...filter,
-                name: e.target.value,
-              })
-            }
+            onChange={(e) => {
+              if (delayID) clearTimeout(delayID);
+
+              delayID = setTimeout(() => {
+                onChange({
+                  ...filter,
+                  name: e.target.value,
+                });
+              }, 1000);
+            }}
           />
         </div>
 

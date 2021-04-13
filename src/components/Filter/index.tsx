@@ -2,6 +2,7 @@ import React from "react";
 
 import Select from "../Select";
 import ToggleArrow from "../ToggleArrow";
+import Slider from "../Slider";
 import { FilterType, OrderBy } from "../../types";
 import { Wrapper } from "./styles";
 
@@ -37,16 +38,13 @@ export default function Filter({
 
         <div className="input-group input-group__score">
           <label htmlFor="minimum_score">Minimum Score</label>
-          <input
-            type="text"
-            name="minimum_score"
-            onChange={(e) =>
+          <Slider
+            min={1}
+            max={10}
+            onFinalChange={([min, max]) =>
               onChange({
                 ...filter,
-                score: {
-                  min: parseInt(e.target.value),
-                  max: parseInt(e.target.value),
-                },
+                score: { min, max },
               })
             }
           />

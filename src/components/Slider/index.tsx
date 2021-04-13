@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { Transition } from "react-transition-group";
 
 import Range from "./Range";
 import { Wrapper, RangeDisplay } from "./styles";

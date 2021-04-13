@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
-import { TransitionStatus } from "react-transition-group";
+import { Transition } from "react-transition-group";
 
 import { Wrapper } from "./styles";
 import { OrderBy } from "../../../types";
 
 type DropdownProps = {
-  transitionState: TransitionStatus;
+  show: boolean;
   items: OrderBy[];
   selected: OrderBy;
   onSelect: (selected: OrderBy) => void;
@@ -13,7 +13,7 @@ type DropdownProps = {
 };
 
 export default function Dropdown({
-  transitionState,
+  show,
   items,
   selected,
   onSelect,
@@ -44,7 +44,7 @@ export default function Dropdown({
   );
 
   useEffect(() => {
-    if (buttonRefs && transitionState === "entered") {
+    if (buttonRefs) {
       buttonRefs[buttonIndex].focus();
       buttonRefs[buttonIndex].addEventListener("blur", onBlur);
 
@@ -52,7 +52,7 @@ export default function Dropdown({
         buttonRefs[buttonIndex].removeEventListener("blur", onBlur);
       };
     }
-  }, [transitionState, buttonRefs, buttonIndex, onBlur]);
+  }, [buttonRefs, buttonIndex, onBlur]);
 
   useEffect(() => {
     function onDown(e: KeyboardEvent) {
@@ -84,8 +84,12 @@ export default function Dropdown({
   }, [buttonIndex, buttonRefs, items, onBlur]);
 
   return (
-    <Wrapper ref={dropDownRef} transitionState={transitionState}>
-      <div className="drop-menu">{options}</div>
-    </Wrapper>
+    <Transition in={show} timeout={300} unmountOnExit addEndListener={null}>
+      {(state) => (
+        <Wrapper ref={dropDownRef} transitionState={state}>
+          <div className="drop-menu">{options}</div>
+        </Wrapper>
+      )}
+    </Transition>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Transition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -30,20 +29,17 @@ export default function Select({
         <h2>{selected}</h2>
         <FontAwesomeIcon className="drop-icon" icon={faCaretDown} />
       </button>
-      <Transition in={show} timeout={300} unmountOnExit addEndListener={null}>
-        {(state) => (
-          <Dropdown
-            items={items}
-            selected={selected}
-            transitionState={state}
-            onSelect={(item) => {
-              onSelect(item);
-              setShow(false);
-            }}
-            onBlur={() => setShow(false)}
-          />
-        )}
-      </Transition>
+
+      <Dropdown
+        show={show}
+        items={items}
+        selected={selected}
+        onSelect={(item) => {
+          onSelect(item);
+          setShow(false);
+        }}
+        onBlur={() => setShow(false)}
+      />
     </Wrapper>
   );
 }

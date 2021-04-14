@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 import respondTo from "../../utils/respondTo";
@@ -15,7 +16,8 @@ export const Wrapper = styled.div`
   )}
 `;
 
-export const HeaderItem = styled.div`
+export const HeaderItem = styled(Link)`
+  text-decoration: none;
   position: relative;
 
   h1 {

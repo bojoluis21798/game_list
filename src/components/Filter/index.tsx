@@ -22,17 +22,19 @@ type FilterProps = {
   onChange: (form: FilterType) => void;
   onClear: () => void;
   filter: FilterType;
+  className: string;
 };
 
 export default function Filter({
   onClear,
   onChange,
   filter: filterState,
+  className = "",
 }: FilterProps): JSX.Element {
   const filter = filterState || initialFilter;
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <h2 className="filter-title">Filter Results</h2>
 
       <div className="filter-form">

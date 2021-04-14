@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   background-color: ${(props) => props.theme.cardColor};
-  margin: 0.5rem;
   padding: 1rem;
 
   .filter-title {

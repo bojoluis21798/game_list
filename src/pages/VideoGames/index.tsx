@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 
 import Filter from "../../components/Filter";
-import GameCard from "../../components/GameCard";
+import GameCard, { GameLoader } from "../../components/GameCard";
 import { Wrapper } from "./styles";
 import { FilterType, GameType } from "../../types";
 
@@ -42,6 +42,11 @@ export default function VideoGame(): JSX.Element {
     [gameList.data]
   );
 
+  const loadingGames = useMemo(
+    () => new Array(3).fill(<GameLoader className="game-card" />),
+    []
+  );
+
   return (
     <Wrapper>
       <Filter
@@ -50,7 +55,7 @@ export default function VideoGame(): JSX.Element {
         onChange={(filter) => setFilter(filter)}
         onClear={() => setFilter(null)}
       />
-      {games}
+      {gameList.loading ? loadingGames : games}
     </Wrapper>
   );
 }

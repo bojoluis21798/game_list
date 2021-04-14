@@ -1,6 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
 
+import GameLoader from "./GameLoader";
 import { Wrapper } from "./styles";
 import { GameType } from "../../types";
 
@@ -32,3 +33,5 @@ export default function GameCard({
     </Wrapper>
   );
 }
+
+export { GameLoader };

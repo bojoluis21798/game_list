@@ -13,3 +13,11 @@ export type FilterType = {
   orderBy: OrderBy;
   ascending: boolean;
 };
+
+export type GameType = {
+  first_release_date: number;
+  id: number;
+  name: string;
+  rating: number;
+  summary: string;
+};

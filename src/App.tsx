@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+
+import VideoGames from "./pages/VideoGames";
+import Contact from "./pages/Contact";
 
 import Header from "./components/Header";
-import Filter from "./components/Filter";
 import { Wrapper } from "./styles";
-import { FilterType } from "./types";
+
+const routes = [
+  { path: "/", title: "VIDEO GAMES", render: <VideoGames /> },
+  { path: "/contact", title: "CONTACT", render: <Contact /> },
+];
 
 export default function App(): JSX.Element {
-  const [filter, setFilter] = useState<FilterType>(null);
-
   return (
     <Wrapper>
-      <Header
-        items={[{ name: "VIDEO GAMES", shadow: "VIDEO" }, { name: "CONTACT" }]}
-      />
-      <Filter
-        filter={filter}
-        onChange={(filter) => setFilter(filter)}
-        onClear={() => setFilter(null)}
-      />
+      <Header routes={routes} />
+      <Switch>
+        {routes.map(({ path, render }) => (
+          <Route key={path} path={path} render={() => render} exact />
+        ))}
+      </Switch>
     </Wrapper>
   );
 }

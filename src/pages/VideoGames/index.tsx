@@ -6,6 +6,8 @@ import GameCard, { GameLoader } from "../../components/GameCard";
 import { Wrapper } from "./styles";
 import { FilterType, GameType, OrderBy } from "../../types";
 
+let filterDelayID: ReturnType<typeof setTimeout> = null;
+
 type GameList = {
   loading: boolean;
   fail: boolean;
@@ -20,7 +22,7 @@ export default function VideoGame(): JSX.Element {
       max: 10,
     },
     orderBy: OrderBy.RELEASE_DATE,
-    ascending: true,
+    ascending: false,
   });
 
   const [gameList, setGameList] = useState<GameList>({
@@ -82,7 +84,15 @@ export default function VideoGame(): JSX.Element {
       <Filter
         className="filter-card"
         filter={filter}
-        onChange={(filter) => setFilter(filter)}
+        onChange={(filter) => {
+          if (filterDelayID) clearTimeout(filterDelayID);
+
+          setGameList((gameList) => ({ ...gameList, loading: true }));
+          setFilter(filter);
+          filterDelayID = setTimeout(() => {
+            setGameList((gameList) => ({ ...gameList, loading: false }));
+          }, 2000);
+        }}
         onClear={() => setFilter(null)}
       />
       {gameList.loading ? loadingGames : games}

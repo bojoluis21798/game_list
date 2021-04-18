@@ -8,16 +8,6 @@ import { Wrapper } from "./styles";
 
 let delayID: ReturnType<typeof setTimeout> = null;
 
-const initialFilter: FilterType = {
-  name: "",
-  score: {
-    min: 1,
-    max: 10,
-  },
-  orderBy: OrderBy.RELEASE_DATE,
-  ascending: true,
-};
-
 type FilterProps = {
   onChange: (form: FilterType) => void;
   onClear: () => void;
@@ -28,11 +18,9 @@ type FilterProps = {
 export default function Filter({
   onClear,
   onChange,
-  filter: filterState,
+  filter,
   className = "",
 }: FilterProps): JSX.Element {
-  const filter = filterState || initialFilter;
-
   return (
     <Wrapper className={className}>
       <h2 className="filter-title">Filter Results</h2>

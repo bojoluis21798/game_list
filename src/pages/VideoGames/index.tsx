@@ -4,7 +4,7 @@ import axios from "axios";
 import Filter from "../../components/Filter";
 import GameCard, { GameLoader } from "../../components/GameCard";
 import { Wrapper } from "./styles";
-import { FilterType, GameType } from "../../types";
+import { FilterType, GameType, OrderBy } from "../../types";
 
 type GameList = {
   loading: boolean;
@@ -13,7 +13,15 @@ type GameList = {
 };
 
 export default function VideoGame(): JSX.Element {
-  const [filter, setFilter] = useState<FilterType>(null);
+  const [filter, setFilter] = useState<FilterType>({
+    name: "",
+    score: {
+      min: 1,
+      max: 10,
+    },
+    orderBy: OrderBy.RELEASE_DATE,
+    ascending: true,
+  });
 
   const [gameList, setGameList] = useState<GameList>({
     loading: true,

@@ -62,10 +62,11 @@ export default function Filter({
           <label htmlFor="order_by">Order By</label>
           <div className="order-by-group">
             <ToggleArrow
-              onToggle={(toggleState) => {
+              ascending={filter.ascending}
+              onToggle={() => {
                 onChange({
                   ...filter,
-                  ascending: toggleState,
+                  ascending: !filter.ascending,
                 });
               }}
             />

@@ -6,7 +6,7 @@ import Slider from "../Slider";
 import { FilterType, OrderBy } from "../../types";
 import { Wrapper } from "./styles";
 
-let delayID: NodeJS.Timeout = null;
+let delayID: ReturnType<typeof setTimeout> = null;
 
 const initialFilter: FilterType = {
   name: "",

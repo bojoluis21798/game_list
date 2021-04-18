@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Transition } from "react-transition-group";
 
 import Range from "./Range";
 import { Wrapper, RangeDisplay } from "./styles";
@@ -26,16 +27,25 @@ export default function Slider({
         {scoreMin} - {scoreMax}
       </RangeDisplay>
 
-      <Range
-        show={show}
-        wrapperRef={sliderWrapperRef}
-        min={min}
-        max={max}
-        values={values}
-        onChange={([min, max]) => setValues([min, max])}
-        onFinalChange={onFinalChange}
-        onBlur={() => setShow(false)}
-      />
+      <Transition
+        in={show}
+        unmountOnExit
+        timeout={300}
+        addEndListener={() => null}
+      >
+        {(state) => (
+          <Range
+            transitionState={state}
+            wrapperRef={sliderWrapperRef}
+            min={min}
+            max={max}
+            values={values}
+            onChange={([min, max]) => setValues([min, max])}
+            onFinalChange={onFinalChange}
+            onBlur={() => setShow(false)}
+          />
+        )}
+      </Transition>
     </Wrapper>
   );
 }

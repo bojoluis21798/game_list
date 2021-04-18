@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
-import { Transition } from "react-transition-group";
+import { TransitionStatus } from "react-transition-group";
 
 import { Wrapper } from "./styles";
 import { OrderBy } from "../../../types";
 
 type DropdownProps = {
-  show: boolean;
+  transitionState: TransitionStatus;
   items: OrderBy[];
   selected: OrderBy;
   onSelect: (selected: OrderBy) => void;
@@ -13,7 +13,7 @@ type DropdownProps = {
 };
 
 export default function Dropdown({
-  show,
+  transitionState,
   items,
   selected,
   onSelect,
@@ -84,12 +84,8 @@ export default function Dropdown({
   }, [buttonIndex, buttonRefs, items, onBlur]);
 
   return (
-    <Transition in={show} timeout={300} unmountOnExit addEndListener={null}>
-      {(state) => (
-        <Wrapper ref={dropDownRef} transitionState={state}>
-          <div className="drop-menu">{options}</div>
-        </Wrapper>
-      )}
-    </Transition>
+    <Wrapper ref={dropDownRef} transitionState={transitionState}>
+      <div className="drop-menu">{options}</div>
+    </Wrapper>
   );
 }

@@ -42,13 +42,35 @@ export default function VideoGame(): JSX.Element {
     })();
   }, []);
 
-  const games = useMemo(
-    () =>
-      gameList.data.map((game) => (
+  const games = useMemo(() => {
+    const filtered = gameList.data
+      .filter((game) => {
+        const roundedRating = Math.floor(game.rating / 10);
+
+        return (
+          game.name.toLowerCase().includes(filter.name.toLowerCase()) &&
+          roundedRating >= filter.score.min &&
+          roundedRating <= filter.score.max
+        );
+      })
+      .sort((gameA, gameB) => {
+        switch (filter.orderBy) {
+          case OrderBy.NAME:
+            return gameB.name
+              .toLowerCase()
+              .localeCompare(gameA.name.toLowerCase());
+          case OrderBy.RELEASE_DATE:
+            return gameA.first_release_date - gameB.first_release_date;
+          case OrderBy.SCORE:
+            return gameA.rating - gameB.rating;
+        }
+      })
+      .map((game) => (
         <GameCard className="game-card" key={game.id} game={game} />
-      )),
-    [gameList.data]
-  );
+      ));
+
+    return filter.ascending ? filtered : filtered.reverse();
+  }, [gameList.data, filter]);
 
   const loadingGames = useMemo(
     () => new Array(3).fill(<GameLoader className="game-card" />),
